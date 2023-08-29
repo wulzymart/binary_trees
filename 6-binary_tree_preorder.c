@@ -7,7 +7,7 @@
 void binary_tree_preorder(const binary_tree_t *tree, void (*func)(int))
 {
 	/*recursion guard*/
-	if (!tree)
+	if (!tree || !func)
 		return;
 	/* call function on level value */
 	func(tree->n);
