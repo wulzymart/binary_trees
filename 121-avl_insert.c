@@ -12,9 +12,17 @@ avl_t *insert_hlp(avl_t **tree, avl_t *parent, avl_t **new,  int value)
     if (!(*tree))
         return (*new = binary_tree_node(parent, value));
     if (value < (*tree)->n)
+    {
         (*tree)->left = insert_hlp(&(*tree)->left, *tree, new, value);
+        if (!(*tree)->left)
+            return (NULL);
+    }
     else if (value > (*tree)->n)
+    {
         (*tree)->right = insert_hlp(&(*tree)->right, (*tree), new, value);
+        if (!(*tree)->right)
+            return (NULL);
+    }
     else
         return ((*tree));
     bal = binary_tree_balance((*tree));
